@@ -1,0 +1,45 @@
+﻿@using System.Data;
+@model DataSet;
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome Sellers!</h1>
+    <p>Add products</p>
+    <hr>
+
+    <form method="post" asp-controller="Home" asp-action="Create">
+        <label>item Name</label>
+        <input name="item_name"/><br>
+        <label>item count</label>
+        <input count="item_count"/><br>
+        <label>item size</label>
+        <input name="item_size"/><br>
+        <button type="submit">CREATE</button>
+
+    </form>
+     <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>count</th>
+            <th>size</th>
+        </tr>
+        @foreach(DataRow row in Model.Tables[0].Rows)
+        {
+            <tr>
+                <td>@row["item_id"]</td>
+                <td>@row["item_name"]</td>
+                <td>@row["item_count"]</td>
+                <td>@row["item_size"]</td>
+                
+            </tr>
+        }
+        
+        
+    
+</table>
+
+</div>
